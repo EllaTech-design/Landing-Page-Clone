@@ -9,7 +9,7 @@ body {
   background: #000;
   color: #fff;
   line-height: 1.6;
-  
+  height: 3350px;
 }
 .header{
   width: 100%;
@@ -20,16 +20,23 @@ body {
   background-repeat: no-repeat;
   padding: 10px 7%;
   position: relative;
+  top: 0;
+  left: 0;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
   
 }
 nav{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  padding:10px;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 nav img{
-  width: 10rem;
+  height: 40px;
+  width: auto;
   cursor: pointer;
   color: #db0001;
 }
@@ -68,38 +75,59 @@ nav .btn{
   align-items: center;
   display: flex;
   margin-right: 1rem;
-  gap: 10px;
+  gap: 1px;
   overflow: hidden;
+  cursor: pointer;
+  position: relative;
 }
 .email-form input{
    width: 300px;
    padding: 20px;
    font-size: 16px;
    border-radius: 5px;
-   border: none;
-   background-color: #171515;
+   background-color: #808080;
    border: 1px solid #ccc;
    font-weight: 700;
 }
+.email-form label {
+  position: absolute;
+  top: 10px;
+  left:10px;
+  font-size: 16px;
+  transition: o.2s ease-all;
+  pointer-events: none;
+  color: #ccc;
+}
+
+.email-form input:focus ~ label, .email-form input:not(:placeholder-shown) ~ label {
+  top: 0;
+  font-size: 12px;
+  color: #db0001;
+}
 .email-form input::placeholder{
-  color: #fff;
+  color: #808080;
 }
 
 .email-form button{
-  padding: 20px;
+  padding: 15px;
   width: 190px;
   border: none;
   border-radius: 5px;
   background-color: #db0001;
   color: #fff;
-  font-size: 16px;
+  font-size: 1.0rem;
   font-weight: 700;
+}
+
+
+.email-form button i{
+  margin-left: 10px;
 }
 /*        Movies Container         */
 .concave-border{
   box-sizing: border-box;
   padding: 80px;
-  position: absolute;
+  position: relative;
   z-index: 1;
   bottom: -11.rem;
   left: 0;
@@ -124,18 +152,14 @@ nav .btn{
     left: 0;
     z-index: -1;
     margin-top: -.25rem;
-    border-radius: inherit;
-    
+    border-radius: inherit;  
     
 }
-
-
 .concave-border h3{
   font-size: 25px;
   display: flex;
   position:absolute;
   gap: 10px;
-  
 }
 .slider-features{
   display: flex;
@@ -145,16 +169,17 @@ nav .btn{
   margin-bottom: 150px;
   overflow-x: auto;
   scroll-behavior: smooth;
+  transition: transform 0.5s;
 }
 .slider-features::-webkit-scrollbar{
   display: none;
 }
 .pre-btn, .nxt-btn{
   width: 2vw;
-  height: 100px;
+  height: 120px;
   position: absolute;
-  top: 50px;
-  transform: translateY(-50px);
+  top: 40%;
+  transform: translateY(-40%);
   font-size: 20px;
   margin-top: 13%;
   display: flex;
@@ -164,13 +189,13 @@ nav .btn{
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 9;
+  z-index: 1;
 }
 .pre-btn:hover, .nxt-btn:hover{
   opacity: 1;
   background-color: #3a3939;
-
 }
+
 .pre-btn{
   left: 40px;
 }
@@ -193,15 +218,15 @@ nav .btn{
 transform: scale(1.1);
 }
 .overlay-number{
-  position:absolute;
+  position: absolute;
   display: flexbox;
   top: 90%;
-  transform: translate(-450%, -50%);
+  transform: translate(-160px, -50%);
   font-size: 68px;
   font-weight: bold;
   color: #fff;
 }
-/*-----------Netflix Movies------------*/
+/*-----------Netflix Reasons------------*/
 .reasons-container{
   width: 100%;
   height: 100%;
@@ -249,20 +274,22 @@ transform: scale(1.1);
 
 }
 /*--------------Netflix Questions---------------*/
+
 .questions-container{
   width: 100%;
-  height: 100%;
+  max-width: 95%;
   position: absolute;
   top: 256%;
-  max-width: 73%;
   padding-left: 80px;
 }
-.list-ideal {
+.questions-list h2{
+  font-size: 24px;
   margin-bottom: 10px;
-  width: 130%;
-  
 }
-
+.list-ideal {
+  margin-bottom: 15px;
+  width: 100%;
+}
 .list-show{
   display: flex;
   justify-content: space-between;
@@ -279,19 +306,24 @@ transform: scale(1.1);
 background-color: #3d3d3d;
 }
 .question-content{
-  display: none;
+  position: relative;
+   display: none;
   background-color: #2c2b2b;
   font-size: 22px;
+  height: 187px;
   margin-top: 1.5px;
   padding: 20px;
   max-height: 0;
   overflow: hidden;
-  display: none;
   transition: max-height 0.3s ease-out;
 }
 .question-content .inn-content{
-  margin-bottom: 20px;
+  margin-bottom: 400px;
 }
+.inn-content{
+  margin-top: -10px;
+}
+
 .plus-icon{
   display: inline-block;
   font-size: 28px;
@@ -310,34 +342,61 @@ background-color: #3d3d3d;
   display: block;
   max-height: 500px;
   transition: max-height 0.3s ease-in;
-  
 }
 
 /*-------------------Netflix Member----------------*/
 .membership-container{
   position: absolute;
-  top: 364%;
-  left: 25%;
+  flex: 0 0 auto;
+  margin-top: 20px;
+  top: 354%;
+  left: 15%;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  
 }
+.membership-container button i {
+  margin-left: 20px;
+}
+
 .account-in{
+  display: flex;
+  flex-direction: column;
   max-width: 950px;
-  margin: 0 auto;
-  padding: 20px;
+  height: 100px;
+  margin-top: 110px;
+  margin-bottom: 50px;
+  z-index: 1;
+  padding: 40px;
 }
+
+.account-in-span{
+  display: block;
+  line-height: 30px;
+  margin-top: 25px;
+  margin-bottom: -10px;
+}
+
 .account-in p{
   display: inline-flex;
-  font-size: 1rem;
+  font-size: 15px;
+  padding-left: 8rem;
+  margin-top: 50px;
   margin-bottom: 10px;
-
+  margin-left: 1rem;
+  text-align: center;
 }
 .account-in form{
  display: flex;
  justify-content: center;
  flex-wrap: wrap;
- width: 130%;
- padding-right: 200px;
+ width: 150%;
+ padding-left: 5rem;
+ 
 }
 form #email{
   flex-grow: 1;
@@ -348,9 +407,22 @@ form #email{
   border-radius: 2px;
   background-color: #0f0d0d;
   color: white;
-  
-  
-} 
+
+}
+form label {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 140px;
+  font-size: 16px;
+  transition: o.2s ease-all;
+  pointer-events: none;
+  color: #ccc;
+}
+form input:focus ~ label, form input:not(:placeholder-shown) ~ label {
+  bottom: -17px;
+  font-size: 12px;
+  color: #db0001;
+}
 .account-in button{
   background-color:#db0001;
   color: #ccc;
@@ -366,10 +438,332 @@ form #email{
 .account-in button i{
   margin-left: 10px;
 }
-
+.questions-container, .aids-container {
+  display: relative;
+}
 /*---------------Netflix Aids-------------*/
 .aids-container{
-  position: absolute;
-   top: 390%;
+   position: absolute;
+   top: 420%;
    padding-left: 80px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+  
+.aid-lists {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  column-gap: 250px;
+}
+
+.aid-lists a:active {
+  color: #db0001 ;
+}
+
+.aid-contact {
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+}
+.aid-contact a{
+  color: rgb(196, 192, 192);
+}
+
+.aid-question a {
+  color: rgb(196, 192, 192);
+  font-weight: 200;
+  font-size: 14px;
+}
+/*---------Netflix Language---------*/
+footer {
+  position: absolute;
+  top: 473%;
+  padding-left: 80px;
+}
+.language-selector{
+  margin-top: -5%;
+}
+.language-selector select{
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 16px;
+  border-radius: 2px;
+  padding: 5px 30px;
+}
+
+.language-selector select:focus {
+  outline: none;
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.place h5{
+  margin-top: 8%;
+  color: #bfbebe;
+}
+.place p{
+  color: #808080;
+  font-size: 0.85rem;
+  margin-top: 8%;
+}
+.place p b a{
+  color: #0404d3;
+  cursor: pointer;
+}
+footer .end-button{
+  display: none;
+}
+
+footer #more-info{
+  margin-top: 2%;
+  display: none;
+}
+/* Mobile Screen Styles */
+@media only screen and (max-width: 768px)  {
+  /* Header Section */
+  .header {
+    height: 100vh;
+    padding: 10px 5%;
+  }
+  nav img{
+  width: 6rem;
+}
+  .header-content {
+    top: 20%;
+    left: 3%;
+    margin-top: 30px;
+
+  }
+  .header-content h1 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+  }
+  .header-content h3 {
+    margin-right: 1.5rem;
+    padding-top: .5rem;
+  }
+  .header-content p {
+      padding-left: 10px;
+      margin-top:5px;
+  }
+  .email-form {
+    flex-direction: column;
+    gap: 20px;
+    margin-left: 2rem;
+  }
+  .email-form input {
+    width: 27rem;
+    padding: 15px;
+    
+  }
+  .email-form button {
+    width: 35%;
+    padding: 15px;
+   margin-bottom: 5px;
+  }
+
+  /* Movies Container */
+  .concave-border {
+    top: 97%;
+    padding: 40px;
+    border-top-left-radius: 30% 20px;
+    border-top-right-radius: 30% 20px;
+  }
+  .concave-border h3{
+  font-size: 18px;
+  display: flex;
+  position:absolute;
+  gap: 15px;
+  bottom: 75%;
+  
+}
+.slider-features {
+  padding-top: 15rem;
+    
+  }
+
+.pre-btn{
+  left: 10px;
+}
+.nxt-btn{
+  right: 10px;
+}
+.pre-btn, .nxt-btn{
+  width: 24px;
+  margin-top: 13%;
+  top: 65px;
+}
+
+.overlay-number{
+  transform: translate(-50%, -50%);
+  padding-right: 43%;
+   
+}
+
+  .image-item img {
+    width: 100px;
+    height: 70%;
+    
+    
+  }
+  
+
+  /* Netflix Reasons */
+  .reasons-container {
+    top: 146%;
+    padding-left: 20px;
+    width: 100%;
+     height: 100%;
+     max-width: 95%;
+    
+  }
+  .reasons {
+    grid-template-columns: repeat(1, 100%);
+  }
+  .reasons-list h2 {
+    font-size: 18px;
+  }
+  .reasons i {
+    margin: -22px 23rem;
+    top: -200px;
+  }
+
+  /* Netflix Questions */
+  .questions-container {
+    top: 289%;
+    padding-left: 20px;
+    max-width: 95%;
+    
+  }
+  .questions-list h2 {
+    font-size: 18px;
+  }
+  .list-ideal {
+    width: 100%;
+  }
+
+  /* Netflix Membership */
+  .membership-container {
+    display: flex;
+    position: absolute;
+    
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    top: 415%;
+    left: 15%;
+    height: 200px;
+  }
+  .account-in p{
+    margin-top: -100px;
+    margin-right: -15px;
+  }
+  .account-in form{
+   width: 100%;
+}
+form #email{
+  flex-grow: 1;
+  padding: 15px 105px;
+  border: 1px solid #8c8c8c;
+  font-size: 1rem ;
+  margin-right: 10px;
+  border-radius: 2px;
+  background-color: #0f0d0d;
+  color: white;
+  
+
+}
+form label {
+  position: absolute;
+  bottom: 5.0rem;
+  left: -10%;
+}
+form input:focus ~ label, form input:not(:placeholder-shown) ~ label {
+  bottom: 100px;
+  font-size: 12px;
+  color: #db0001;
+}
+.account-in button{
+  background-color:#db0001;
+  margin-top: 15px;
+  margin-right: 14.5rem;
+
+}
+
+  /* Netflix Aids */
+  .aids-container {
+    top: 445%;
+    margin-top: 200px;
+    padding-left:20px;
+  }
+
+  .aid-contact{
+    margin-bottom: 40px;
+  }
+ .aid-lists {
+  display: inline;
+  gap: 20px;
+  line-height: 30px;
+}
+.aid-contact a{
+  color: rgb(196, 192, 192);
+}
+/*---------Netflix Language---------*/
+footer {
+  position: relative;
+  top: 2550px;
+  padding-left: 20px;
+}
+.language-selector{
+  margin-top: -9%;
+}
+.language-selector select{
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 16px;
+  border-radius: 2px;
+  padding: 5px 30px;
+}
+
+.language-selector select:focus {
+  outline: none;
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.place h5{
+  margin-top: 4%;
+  color: #bfbebe;
+}
+.place p{
+  color: #808080;
+  font-size: 0.85rem;
+  margin-top: 4%;
+}
+.place p b a{
+  color: #0404d3;
+  cursor: pointer;
+}
+footer .end-button{
+  width: 100%;
+  height: 40px;
+  max-width: 95%;
+  font-size: 1.2rem;
+  background-color: #db0001;
+  color: #ccc;
+  display: inline;
+  position: relative;
+  border-radius: 4px;
+  border: none;
+  margin-top: 90px;
+  transition: all 0.3s ease-in-out;
+}
+footer #more-info{
+  margin-top: 2%;
+  display: none;
+}
 }
